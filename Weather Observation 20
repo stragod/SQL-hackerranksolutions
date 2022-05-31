@@ -1,0 +1,4 @@
+SELECT ROUND(AVG(LAT_N),4) FROM (SELECT LAT_N,
+                                     ROW_NUMBER() OVER (ORDER BY LAT_N ASC) AS ROWASC,
+      ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS ROWDESC from station)pool
+                                     where ROWASC IN (ROWDESC,ROWDESC-1,ROWDESC+1)
