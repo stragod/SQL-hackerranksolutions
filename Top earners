@@ -1,0 +1,5 @@
+
+select max(salary*months),count(*) from Employee
+group by salary*months
+order by salary*months DESC
+limit 1
